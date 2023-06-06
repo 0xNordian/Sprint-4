@@ -28,6 +28,14 @@ const movies = [
     score: 7.6
   },
   {
+    title: 'Ahe Royal Tenenbaums 2',
+    year: 2001,
+    director: 'Wes Anderson',
+    duration: '1h 50min',
+    genre: ['Comedy', 'Drama'],
+    score: 7.6
+  },
+  {
     title: 'Rushmore',
     year: 1998,
     director: 'Wes Anderson',
@@ -89,21 +97,54 @@ moviesAverageOfDirector(movies, 'Christopher Nolan');
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  const test = array.map(items => items.title).sort();
-  console.log("test: ", test.slice(0, 20));
-  return test.slice(0, 20);
+  const arr = array.map(items => items.title).sort();
+  console.log("test: ", arr.slice(0, 20));
+  return arr.slice(0, 20);
 }
 orderAlphabetically(movies);
 
-// Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
+  const orderAscByYear = array.slice().sort((a, b) => {
+    if (a.year !== b.year) {
+      return a.year - b.year;
+    } else {
+      return a.title.localeCompare(b.title);
+    }
+  });
 
+  console.log("orderAscByYear: ", orderAscByYear);
+  return orderAscByYear;
 }
+
+orderByYear(movies);
+
+
+orderByYear(movies);
+
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, category) {
+  let score = 0;
+  let elements = 0;
 
+  array.forEach((item) => {
+    if (item.genre.includes(category)) {
+      score += item.score;
+      elements += 1;
+      if(item.score === '') elements -= 1;
+    }
+  });
+
+  if (elements === 0) {
+    return 0;
+  }
+
+  const average = (score / elements).toFixed(2);  
+  return Number(average);
 }
+
+moviesAverageByCategory(movies, 'Crime');
+
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
