@@ -147,9 +147,22 @@ moviesAverageByCategory(movies, 'Crime');
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+  const newArray = JSON.parse(JSON.stringify(array));
+  const currentDuration = newArray.map((item) => {
+    if (typeof item.duration === 'string') {
+      const arr = item.duration.split('');
+      const newDuration = (arr[0] * 60) + Number(arr.slice(3, 5).join(''));
+      item.duration = parseInt(newDuration, 10);
+    }
+    return item;
+  });
+  return currentDuration;
 }
+
+hoursToMinutes(movies);
+
+
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
