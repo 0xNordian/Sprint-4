@@ -33,7 +33,7 @@ const movies = [
     director: 'Wes Anderson',
     duration: '1h 50min',
     genre: ['Comedy', 'Drama'],
-    score: 7.6
+    score: 8.6
   },
   {
     title: 'Rushmore',
@@ -53,11 +53,11 @@ const movies = [
   },
   {
     title: 'The Dark Knight',
-    year: 2008,
+    year: 2001,
     director: 'Christopher Nolan',
     duration: '2h 32min',
     genre: ['Action', 'Science Fiction'],
-    score: 9
+    score: 8.6
   }]
 
 // Exercise 1: Get the array of all directors.
@@ -165,9 +165,18 @@ hoursToMinutes(movies);
 
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-
+function bestFilmOfYear(array, year) {
+  const filteredByYear = array.filter(items => items.year === year);
+  const bestMoviebyYear = filteredByYear.map(items => items.score);
+  
+  const highestScore = Math.max(...bestMoviebyYear);
+  const highestScoreMovies = filteredByYear.filter(items => items.score === highestScore);
+  
+  return highestScoreMovies;
 }
+
+const bestMovies = bestFilmOfYear(movies, 2001);
+console.log("bestMovies: ", bestMovies);
 
 
 
