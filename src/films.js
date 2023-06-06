@@ -1,5 +1,4 @@
 // import { movies } from './data.js';
-
 // // Access the movies array
 // console.log(movies);
 
@@ -37,20 +36,28 @@ const movies = [
     score: 7.7
   },
   {
+    title: 'Interstellar',
+    year: 2014,
+    director: 'Christopher Nolan',
+    duration: '2h 55min',
+    genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+    score: 8.7
+  },
+  {
     title: 'The Dark Knight',
     year: 2008,
     director: 'Christopher Nolan',
     duration: '2h 32min',
-    genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+    genre: ['Action', 'Science Fiction'],
     score: 9
   }]
 
-  // Exercise 1: Get the array of all directors.
-  function getAllDirectors(array) {
-    const directors = array.map((movie) => {
-      return movie.director;
-    });
-    return directors;
+// Exercise 1: Get the array of all directors.
+function getAllDirectors(array) {
+  const directors = array.map((movie) => {
+    return movie.director;
+  });
+  return directors;
 }
 
 // Exercise 2: Get the films of a certain director
@@ -63,13 +70,30 @@ getMoviesFromDirector(movies, 'Wes Anderson');
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  
-}
+  const scoreAvgbyDirector = array
+    .filter((movie) => movie.director === director)
+    .map((movie) => movie.score);
+
+  const sumOfScores = scoreAvgbyDirector.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+
+  const averageScore = sumOfScores / scoreAvgbyDirector.length;
+
+  console.log(averageScore);
+  return averageScore;
+};
+
+moviesAverageOfDirector(movies, 'Christopher Nolan');
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  
+  const test = array.map(items => items.title).sort();
+  console.log("test: ", test.slice(0, 20));
+  return test.slice(0, 20);
 }
+orderAlphabetically(movies);
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {
@@ -88,7 +112,7 @@ function hoursToMinutes() {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
-  
+
 }
 
 
