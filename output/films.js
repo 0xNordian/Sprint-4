@@ -1,9 +1,13 @@
 "use strict";
 
+var _data = require("../src/data");
+// Access the movies array
+console.log(_data.movies);
+
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   //let result =  ???;
-  console.log("EXERCICE 1 ->", result);
+  console.log("EXERCICE 1 ->", data);
   return result;
 }
 
