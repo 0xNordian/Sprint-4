@@ -1,4 +1,4 @@
-//import { movies } from '../src/data.js';
+// import { movies } from '../src/data.js';
 
 const movies = [
   {
@@ -2004,10 +2004,11 @@ const movies = [
   }
 ];
 
+// console.log("movies: ", movies.length);
 /* export default films; */
-if (typeof module !== 'undefined') {
-  module.exports = movies;
-}
+// if (typeof module !== 'undefined') {
+//   module.exports = movies;
+// }
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
@@ -2017,6 +2018,7 @@ function getAllDirectors(array) {
   console.log("Directors: ", directors);
   return directors;
 }
+getAllDirectors(movies);
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
